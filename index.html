@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/style.css">
+  <title>Task2</title>
+</head>
+<body>
+  <div id="counter">123</div>
+  <button id="btn"><span id="lg">Let's go</span></button>
+  <div id="myAlert"></div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    $('#btn').css({
+      "background":"red",
+      "width":"100px",
+      "height":"35px",
+      "margin":"100px",
+    });
+    $('#counter').css({
+      "width":"35px",
+      "height":"35px",
+      "background":"red",
+      "display":"none",
+    });
+
+    var texts = new Array();
+    texts.push("0 секунд");
+    texts.push("1 секунда");
+    texts.push("2 секунды");
+    texts.push("3 секунды");
+    texts.push("4 секунды");
+    texts.push("5 секунд");
+    texts.push("Done");
+    var point = 0;
+    $('#btn').click(function changeText(){
+      $('#lg').html(texts[point]);
+      if(point < texts.length - 1){
+        point ++;
+      }
+      setTimeout(changeText,1000)
+    });
+
+    $('#btn').click(function(){
+      let mm = '#btn';
+      let nn = '#counter';
+      var p = $('#btn').css('background', 'red')
+      var v = $('#counter').css('display', 'none')
+      $(mm).animate({
+        'margin':"+=0px"
+      },6000)
+        .animate({'margin':'+=130px'},2000)
+        .animate({'border-radius':'25%'})
+      p.queue(function(){
+        p.css('background','yellow')
+        v.css('display','block')
+      });
+    });
+
+    $("#btn").click(function() {
+      var count = -85;
+      var innterval = setInterval(function() {
+        if (count == 50){
+          clearInterval(innterval);
+          allert();
+        };
+      count++;
+      $("#counter").html(count);
+      }, 100);
+    });
+
+    function allert(){
+      swal({
+        title: "Good job!",
+        text: "Clicke this button!",
+        icon: "success",
+        button: "Delete all",
+
+      }).then (function(){
+        $("body").empty();
+      });
+    };
+
+  </script>
+</body>
+</html>
