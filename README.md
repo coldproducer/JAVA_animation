@@ -1,1 +1,1 @@
-﻿# Jquerry_animation
+﻿# JQuery_animation
